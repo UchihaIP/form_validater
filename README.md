@@ -39,7 +39,7 @@ Cоздать и активировать виртуальное окружен�
 #### Получение информации о товаре
 
 ```http
-  GET /get_item/?f_name1=value1&f_name2=value2
+  POST /get_item/?f_name1=value1&f_name2=value2
 ```
 
 | Parameter | Type     | Description                |
