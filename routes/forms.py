@@ -1,6 +1,5 @@
 import logging
 from typing import Literal
-import sys
 
 from fastapi import APIRouter, Request
 
@@ -33,7 +32,10 @@ async def get_form(request: Request) -> dict[Literal["form_name"], str] | dict:
     params = request.query_params
     fields, values = list(params.keys()), list(params.values())
     logging.info(f"Параметры запроса /get_form/ {fields=}, {values=}")
-    form = await form_database.find_form(fields, values)
+    try:
+        form = await form_database.find_form(fields, values)
+    except IndexError:
+        return {"error_message": "Переданы неверные параметры!"}
     if form:
         logging.info("Соответствие полей с шаблоном найдены успешно!")
         return {

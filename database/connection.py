@@ -2,8 +2,8 @@ import random
 import string
 
 from asynctinydb import TinyDB, where
+from asynctinydb.table import Document
 from pydantic import BaseSettings
-from tinydb.table import Document
 
 db = TinyDB("tiny_db.json")
 
